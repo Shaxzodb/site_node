@@ -29,17 +29,18 @@ if (app.get("env") === "development") {
 	app.use(morgan("tiny")); // for logging requests
 	
 	
-} else {
-	app.use(helmet()); // for logging and security
-	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
-	app.use((req, res, next) => {
-		if (req.secure) {
-			next();
-		} else {
-			res.redirect("https://" + req.headers.host + req.url);
-		}
-	});
-}
+} 
+// else {
+// 	app.use(helmet()); // for logging and security
+// 	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
+// 	app.use((req, res, next) => {
+// 		if (req.secure) {
+// 			next();
+// 		} else {
+// 			res.redirect("https://" + req.headers.host + req.url);
+// 		}
+// 	});
+// }
 
 
 // app.use(cors({
