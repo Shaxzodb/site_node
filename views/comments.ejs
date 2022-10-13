@@ -1,0 +1,49 @@
+<div class="card border-top mt-1 rounded-0 border-start border-0 border-secondary">
+    <div class="container">
+    <div class="row bootstrap snippets bootdeys">
+        <div class="col">
+            <div class="comment-wrapper">
+              
+                <div class="panel panel-info ">
+                    <div class="panel-heading">
+                        Comment panel
+                        <form action="/detail_article/<%-id%>" method="POST">
+                        <textarea minlength="3" maxlength="250" name="message" class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                        
+                        <div class="d-flex my-2  justify-content-end">
+                          <button type="submit" class="btn m-0 btn-info pull-right ">Post</button>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="panel-body">
+                        
+                        
+                        <div class="clearfix"></div>
+                        <hr>
+                        <ul class="media-list">
+                            <% comments.forEach (comment=>{%>
+                            <li class="media">
+                                <a href="#" class="pull-left">
+                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                </a>
+                                <div class="media-body">
+                                    <strong class="text-success">@<%=comment.author%></strong>
+                                    <span class="text-muted pull-right">
+                                        <small class="text-muted"><%=comment.date%></small>
+                                    </span>
+                                    
+                                    <p>
+                                        <%=comment.message%>
+                                    </p>
+                                </div>
+                            </li>
+                            <%})%>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    </div>

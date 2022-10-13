@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('./navbar',{id:locals.id,c:locals.isAuthentication,admin:locals.admin})%>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="text-center">
+            <img src="../uploads/img-0e2a6fbc-aac1-4638-ba60-52bd4b26df97.jpg" class="rounded w-100" alt="...">
+          </div>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              value="<%-user.username%>"
+              disabled
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <div class="input-group mb-3">
+          <input
+              type="text"
+              class="form-control"
+              placeholder="Address None"
+              aria-label="Address"
+              value="<%-user.address%>"
+              disabled
+              aria-describedby="basic-addon2"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Phone None"
+                aria-label="Phone"
+                value="<%-user.phone%>"
+                disabled
+                aria-describedby="basic-addon3"
+              />
+            </div>
+
+          <div class="input-group mb-3">
+            <% let email=user.email.split('@')%>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Recipient's username"
+              value="<%-email[0]||''%>"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon4"
+              disabled
+            />
+
+            <span class="input-group-text" id="basic-addon4"
+              >@<%-email[1]||'example.com'%></span
+            >
+          </div>
+
+          <label for="basic-url" class="form-label">User Bio</label>
+
+          <div class="input-group">
+            <span class="input-group-text">User Bio</span>
+            <textarea class="form-control" aria-label="User Bio" disabled></textarea>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+    <%- include ('./footer')%>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%=article.title%>
+  </title>
+  <style>
+ 
+
+.comment-wrapper .panel-body {
+    max-height:400px;
+    overflow:auto;
+    width: 100%;
+   
+}
+.comment-wrapper ::-webkit-scrollbar {
+  display: none;
+}
+li{
+  list-style-type: none;
+}
+
+.comment-wrapper .media-list .media img {
+    width:64px;
+    height:64px;
+    border:2px solid #e5e7e8;
+}
+
+.comment-wrapper .media-list .media {
+    border-bottom:1px dashed #efefef;
+    margin-bottom:25px;
+}
+.form-control{
+  width: 100%;
+}
+  </style>
+
+</head>
+
+<body>
+  <%- include('./navbar',{id:locals.id,c:locals.isAuthentication,admin:locals.admin})%>
+  <br/>
+
+    <div class="container">
+      <% if (message) {%>
+        <div class="alert alert-info" role="alert">
+          <%= message%>
+        </div>
+        <%}%>
+          <div class="row">
+            <%if (locals.admin){%>
+              <div class="col-lg-9">
+
+
+                <%}else{%>
+                  <div class="col-lg">
+                    <%}%>
+                      <div class="row">
+                        <%if (!locals.admin){%>
+                          <div class="col-lg-9">
+                            <%}else{%>
+                              <div class="col">
+                                <%}%>
+                                  <div class="card rounded-0 border-bottom border-start border-0 border-secondary">
+                                    <div class="card-body">
+                                      <h5 class="card-title">
+                                        <%=article.title%>
+                                      </h5>
+                                      <hr class="border border-success" />
+                                      <div class="card-text-div ck-content">
+                                        <%-article.content%>
+                                      </div>
+                                      <time>
+                                        <p class="card-text">
+                                          <small class="text-muted">
+                                            <%=article['date']%>
+                                          </small>
+                                        </p>
+                                      </time>
+                                    </div>
+                                    <img src="/uploads/<%=article.img%>" class="p-3 card-img-bottom" alt="..." />
+                                  </div>
+                              </div>
+                              <%if (!locals.admin){%>
+
+                                <div class="col-lg-3 mt-3 mt-lg-2 border-lg-top">
+
+                                  <% articles.forEach (article0=>{%>
+
+
+                                    <%if (article0.direction==article.direction){%>
+                                      <%if (article0.id==article.id){%>
+
+
+                                        <%}else{%>
+                                          <div
+                                            class="card border-bottom mt-1 rounded-0 border-start border-0 border-secondary">
+                                            <img src="/uploads/<%=article0.img%>" class="rounded-0 card-img-bottom"
+                                              alt="..." />
+                                            <div class="card-body">
+
+                                              <a href="../../detail_article/<%-article0['id']%>"
+                                                rel="noopener noreferrer">
+                                                <h6 class="card-title">
+                                                  <%-article0['title'].slice(0, 100)%>...
+                                                    </h6>
+                                              </a>
+
+
+                                            </div>
+
+                                          </div>
+
+                                          <%}%>
+
+                                            <%}%>
+                                              <%})%>
+                                </div>
+
+
+                                <%}%>
+                          </div>
+                      </div>
+                      <%if (locals.admin){%>
+                        <div class="col-lg">
+                          <div class="row">
+                            <div class="col-12 mt-lg-0 mt-2">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    <center>
+                                      <h6>Update Article</h6>
+                                    </center>
+                                  </div>
+
+                                  <a href="/update/<%-article.id%>" class="btn btn-success  shadow-none w-100">Edit</a>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 mt-lg-2 mt-2">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="card-title">
+                                    <center>
+
+                                      <h6>Delete Article</h6>
+                                    </center>
+                                  </div>
+                                  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalToggleLabel">Ogohlantirish!</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p>Agrarda Maqolani Uchirsangiz Uni Qaytib Tiklay olib bo`lmaydi</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <form method="POST" action="/detail_article/<%-article.id%>?_method=DELETE">
+                                            <button type="submit" class="btn btn-danger  shadow-none w-100">Delete
+                                              Article</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Hide this modal and show the first with the button below.
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button class="btn bbtn btn-danger  shadow-none" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <a class="btn btn-danger  shadow-none w-100" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Delete</a>
+                                  
+
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <%}%>
+                  </div>
+                  <br/>
+                  
+              <%-include('./comments.ejs',{id:article.id,comments})%>
+              </div>
+              </div>
+              <%-include ('footer')%>
+</body>
+
+</html>

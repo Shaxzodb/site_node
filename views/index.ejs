@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .parallax {
+        /* The image used */
+        background-image: url("../static/img/photo_2022-10-06_21-45-36.jpg");
+
+        /* Set a specific height */
+        min-height: 400px;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      h1{
+        height: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <%-
+    include('./navbar',{id:locals.id,c:locals.isAuthentication,admin:locals.admin})%>
+    <div class="parallax d-flex align-items-center m-0">
+      <div class="container">
+        <h1 class="element m-0 p-0 d-flex justify-content-center text-info"></h1>
+      </div>
+    </div>
+    <div class="rounded-0 mt-5">
+    
+      <div class="row m-2">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores molestiae unde in numquam pariatur, fugiat quas illum? Accusamus nisi sed optio. Quas perferendis dolorem deserunt excepturi veritatis inventore odit voluptate?</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-2 mt-lg-0">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores sunt debitis ut in dolore? Quibusdam repudiandae exercitationem similique, error quas amet ex tempore totam tempora, incidunt corporis dolorem voluptas culpa!</div>
+              </div>
+            </div>
+          </div>
+      
+    </div>
+</div>
+    <%-include('./footer')%>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+      var options = {
+        strings: [
+          "BU BOSH SAHIFA",
+          "MAQOLA<span style='color:red'>UZ |</span> SAYTIGA XUSH KELIBSIZ!",
+        ],
+        typeSpeed: 40,
+        startDelay: 1000,
+        //smartBackspace: true,
+        backSpeed: 30,
+        //shuffle: true,
+        loop: true,
+        loopCount: 10000,
+        showCursor: false,
+        cursorChar: "|",
+        autoInsertCss: true,
+        bindInputFocusEvents: true,
+        contentType: "html",
+      };
+
+      var typed = new Typed(".element", options);
+    </script>
+  </body>
+</html>

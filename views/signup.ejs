@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <%- include('./navbar',{id:locals.id,c:locals.isAuthentication,admin:locals.admin})%>
+
+    <div class="container">
+      <% if (error) { %>
+      <br />
+      <div class="alert alert-warning" role="alert">
+        <h6><center><%= error %></center></h6>
+      </div>
+      <% } %>
+
+      <br />
+      <center>
+        <form action="/signup" method="post">
+          <div class="row">
+            <div class="form-floating mb-3">
+              <div class="col-lg-6">
+                <div class="card">
+                  <br />
+                  <h3 class="card-title center">Ro'yxatdan O'tish</h3>
+                  <hr />
+                  <div class="card-body">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control shadow-none"
+                        id="floatingInput"
+                        name="username"
+                        placeholder="Username"
+                      />
+                      <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input
+                        type="email"
+                        class="form-control shadow-none"
+                        name="email"
+                        id="floatingInput"
+                        placeholder="name@example.com"
+                      />
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control shadow-none"
+                        id="floatingPassword"
+                        name="password"
+                        placeholder="Password"
+                      />
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <br />
+                    <div class="card-footer bg-transparent border-success">
+                      <div class="my-3">
+                        <input
+                          type="submit"
+                          class="btn w-100 btn-primary shadow-none primary"
+                          value="Sign Up"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </center>
+    </div>
+
+    <%-include('footer')%>
+  </body>
+</html>
