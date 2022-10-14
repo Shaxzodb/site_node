@@ -22,26 +22,22 @@ app.use(compression()); // for compressing response bodies
 app.use(cookieParser('@K3mMdbME0'));
 app.set("view engine", "ejs");
 app.engine('html', ejs.renderFile);
-app.use("/static",express.static("static"));
-app.use('/uploads/',express.static("uploads"));
+app.use("/static", express.static("static"));
+app.use('/uploads/', express.static("uploads"));
 app.use(methodOverride('_method'))
 if (app.get("env") === "development") {
 	app.use(morgan("tiny")); // for logging requests
-	
-	
-} 
+
+
+}
 else {
 	//app.use(helmet()); // for logging and security
 
 	app.use(
-		helmet.contentSecurityPolicy({
-		  useDefaults: true,
-		  directives: {
-			"script-src": ["cdn.jsdelivr.net", "cdn.ckeditor.com"],
-			//"style-src": null,
-		  },
+		helmet({
+			referrerPolicy: { policy: "no-referrer" },
 		})
-	   );
+	);
 
 	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
 	app.use((req, res, next) => {
@@ -55,11 +51,11 @@ else {
 
 
 app.use(cors({
-	origin:"http://127.0.0.1:5500",
+	origin: "http://127.0.0.1:5500",
 	credentials: true,
 }))
 // app.use(cors());
-app.use( router);
+app.use(router);
 app.use(NotFound);
 
 
