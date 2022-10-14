@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    
+    <script src="https://cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
 
     <style>
 
@@ -127,8 +127,8 @@
 
 
 
-                            <textarea name="content" id="editor" class=" shadow-none">
-          <p>Hello World</p>
+                          <textarea name="content" id="editor" class=" shadow-none">
+          <p></p>
         </textarea>
         <br>
 
@@ -157,16 +157,16 @@
 
         </div>
         <%-include('footer')%>
-        <script src="https://cdn.ckeditor.com/4.19.1/full/ckeditor.js"></script>
-            <script>
-                CKEDITOR.replace("editor", {
-                    uiColor: '#848E9F'
-                    //extraPlugins : 'colorbutton',
-
-                });
-
-
-            </script>
+        
+        <script>
+            CKEDITOR.replace("editor", {
+              uiColor: '#848E9F'
+              //extraPlugins : 'colorbutton',
+    
+            });
+    
+    
+          </script>
 
 
 </body>
