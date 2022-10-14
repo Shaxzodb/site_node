@@ -34,13 +34,10 @@ else {
 	//app.use(helmet()); // for logging and security
 
 	app.use(
-		helmet.contentSecurityPolicy({
-		  directives: {
-			"script-src": ["*"],
-			//"style-src": null,
-		  },
+		helmet({
+			contentSecurityPolicy: false,
 		})
-	  );
+	)
 
 	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
 	app.use((req, res, next) => {
