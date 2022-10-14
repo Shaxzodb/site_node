@@ -37,7 +37,7 @@ else {
 		helmet.contentSecurityPolicy({
 		  directives: {
 			"script-src": ["*"],
-			"style-src": null,
+			//"style-src": null,
 		  },
 		})
 	  );
