@@ -363,8 +363,8 @@ router.get('/update/:id', [Profile, isLoggedIn, AuthToken, isAuthorization], asy
 		res.status(404).render('404', { url: req.headers.host + req.url });
 	}
 }).put('/update/:id', [isLoggedIn, AuthToken, isAuthorization], async (req: Request, res: Response) => {
-	const token = await jwt.verify(req.signedCookies['x-auth-token'], `${process.env.PRIVATE_KEY}`);
-	const role = await Object(token).role;
+	// const token = await jwt.verify(req.signedCookies['x-auth-token'], `${process.env.PRIVATE_KEY}`);
+	const role = await res.locals.user.role;
 	const art = await Article.findOne({ id: req.params.id })
 		.select({ _id: 0, __v: 0 })
 	if (role === 'super_admin' || role === 'admin') {
