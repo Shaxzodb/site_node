@@ -30,24 +30,35 @@ if (app.get("env") === "development") {
 	
 	
 } 
-// else {
-// 	app.use(helmet()); // for logging and security
-// 	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
-// 	app.use((req, res, next) => {
-// 		if (req.secure) {
-// 			next();
-// 		} else {
-// 			res.redirect("https://" + req.headers.host + req.url);
-// 		}
-// 	});
-// }
+else {
+	//app.use(helmet()); // for logging and security
+
+	app.use(
+		helmet.contentSecurityPolicy({
+		  useDefaults: true,
+		  directives: {
+			"script-src": ["cdn.jsdelivr.net", "cdn.ckeditor.com"],
+			//"style-src": null,
+		  },
+		})
+	   );
+
+	app.enable("trust proxy"); // trust proxy is a method of express that allows you to set the value of req.ips to the IP address of the proxy that connected to your app.
+	app.use((req, res, next) => {
+		if (req.secure) {
+			next();
+		} else {
+			res.redirect("https://" + req.headers.host + req.url);
+		}
+	});
+}
 
 
-// app.use(cors({
-// 	origin:"http://127.0.0.1:5500",
-// 	credentials: true,
-// }))
-app.use(cors());
+app.use(cors({
+	origin:"http://127.0.0.1:5500",
+	credentials: true,
+}))
+// app.use(cors());
 app.use( router);
 app.use(NotFound);
 
