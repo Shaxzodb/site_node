@@ -104,6 +104,7 @@ router.get('/login', [isLoggedIn, Profile, isAuthorization], async (req: Request
 			httpOnly: true,
 			maxAge: ms("2d"),
 			// secure: true,
+			
 			sameSite: 'lax',
 			signed: true,
 		})
