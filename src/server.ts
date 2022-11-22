@@ -23,6 +23,7 @@ app.use(cookieParser('@K3mMdbME0'));
 app.set("view engine", "ejs");
 app.engine('html', ejs.renderFile);
 app.use("/static", express.static("static"));
+app.use("/", express.static("public"));
 app.use('/uploads/', express.static("uploads"));
 app.use(methodOverride('_method'))
 if (app.get("env") === "development") {
