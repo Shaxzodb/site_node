@@ -98,14 +98,14 @@ router.get('/login', [isLoggedIn, Profile, isAuthorization], async (req: Request
 		res.cookie('username', user.id, {
 			maxAge: ms("2d"),
 			// secure: true,// Agar urnatilsa http da cookis file urnatilmaydi
-			sameSite: 'lax',
+			// sameSite: 'lax',
 		});
 		res.cookie('x-auth-token', token_jwt, {
 			httpOnly: true,
 			maxAge: ms("2d"),
 			// secure: true,
-			
-			sameSite: 'lax',
+
+			//sameSite: 'lax',
 			signed: true,
 		})
 
