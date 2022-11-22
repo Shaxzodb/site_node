@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAQOLAUZ PROFILE</title>
     <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4150080428382760"
+     crossorigin="anonymous"></script>
   </head>
   <body>
     <%- include('./navbar',{id:locals.id,c:locals.isAuthentication,admin:locals.admin})%>
@@ -82,5 +84,14 @@
       </div>
     </div>
     <%- include ('./footer')%>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGJB7YLBZ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DGJB7YLBZ1');
+</script>
   </body>
 </html>
