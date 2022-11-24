@@ -1,14 +1,13 @@
-# import tomllib
+import requests
+urlpy="https://article-site-project.herokuapp.com/2/"
+urllog="https://lit-headland-94940.herokuapp.com/login"
+urlnode="https://lit-headland-94940.herokuapp.com/articles/1"
 
-# with open("pyproject.toml", "rb") as f:
-#     data = tomllib.load(f)
-#     print(data['build']['req']['r'])
-import tomllib
+auth={
+    'username':"Admin",
+    'password':'123456'
+}
 
-toml_str = """
-python-version = "3.11.0"
-python-implementation = "CPython"
-"""
+with requests.session() as s:
 
-data = tomllib.loads(toml_str)
-print(data['python-version'])
+    print(s.post(urlpy,data=auth).text)
